@@ -12,7 +12,7 @@ class TicTacToe:
             ['-', '-', '-']
         ])
         self.turn = 'X' 
-        
+
     def make_move(self, P) : 
         x, y = P 
         self.board[x][y] = self.turn 
@@ -89,7 +89,7 @@ class TicTacToe:
     def play_game(self) : 
         self.create_board()
         print("Game intiated") 
-        print(self.board, end = '\n' * 2) 
+        self.print_board()
         
         while self.evaluate() == '-1' : 
             
@@ -99,15 +99,17 @@ class TicTacToe:
                 print(f"{self.turn}'s turn") 
                 
                 self.position_input('X') 
-            else : print(f"{self.turn}'s turn") 
+            else : 
                 print(fg('blue'))
                 print(f"{self.turn}'s turn") 
                 
                 self.make_random_move()
-            
+            print()
             self.print_board()
             
         result = self.evaluate() 
+        
+        print(fg('green'))
         if result in ['X', 'O'] : 
             return f"{result} won the match" 
         elif result == '-':
@@ -117,4 +119,5 @@ class TicTacToe:
 if __name__ == "__main__" : 
     game = TicTacToe() 
     
+    print(fg('white'))
     print(f"Result : {game.play_game()}")
