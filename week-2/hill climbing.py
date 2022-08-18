@@ -21,7 +21,7 @@ def getNeighbours(solution):
     neighbours = []
     for i in range(len(solution)):
         for j in range(i + 1, len(solution)):
-            neighbour = solution.copy()
+            neighbour = solution 
             neighbour[i] = solution[j]
             neighbour[j] = solution[i]
             neighbours.append(neighbour)
@@ -43,6 +43,7 @@ def hillClimbing(tsp):
     neighbours = getNeighbours(currentSolution)
     bestNeighbour, bestNeighbourRouteLength = getBestNeighbour(tsp, neighbours)
 
+    
     while bestNeighbourRouteLength < currentRouteLength:
         currentSolution = bestNeighbour
         currentRouteLength = bestNeighbourRouteLength
