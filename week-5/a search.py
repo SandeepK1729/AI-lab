@@ -1,11 +1,11 @@
-class A_star:
+class Graph:
     """Class to find less cost path using A* star Informed Search algorithm"""
 
     def __init__(self, adjancency_matrix, H):
         self.H = H
         self.adjancency_matrix = adjancency_matrix
 
-    def find_a_star(self, start, end):
+    def find_a_star_path(self, start, end):
         open_list = [(start, self.H[start], start)]
 
         while len(open_list) > 0:
@@ -33,7 +33,7 @@ if __name__ == "__main__":
         'C': [('D', 12)]
     }
 
-    a = A_star(A, H)
-    cost, path = a.find_a_star('A', 'D')
+    graph = Graoh(A, H)
+    cost, path = graph.find_a_star_path('A', 'D')
     print(f"cost : {cost}")
     print(f"path : {path}")
