@@ -6,22 +6,21 @@ class A_star:
         self.adjancency_matrix = adjancency_matrix
 
     def find_a_star(self, start, end):
-        open_list = [(start, self.H[start])]
+        open_list = [(start, self.H[start], start)]
 
         while len(open_list) > 0:
 
-            print(open_list)
-            current_node, current_cost = open_list.pop(0)
+            current_node, current_cost, current_path = open_list.pop(0)
 
             if current_node == end:
-                return (current_cost - self.H[end])
+                return (current_cost - self.H[end], current_path)
 
-            for node, cost in self.adjancency_matrix[c_node]:
+            for node, cost in self.adjancency_matrix[current_node]:
 
                 cost += (current_cost - self.H[current_node]) + self.H[node]
-                open_list.append((node, cost))
+                open_list.append((node, cost, f"{current_path} -> {node}"))
 
-            open_list.sort()
+            open_list.sort(key=lambda x: x[1])
 
         return "No path exist"
 
@@ -33,6 +32,8 @@ if __name__ == "__main__":
         'B': [('D', 5)],
         'C': [('D', 12)]
     }
-	
+
     a = A_star(A, H)
-    print(a.find_a_star('A', 'C'))
+    cost, path = a.find_a_star('A', 'D')
+    print(f"cost : {cost}")
+    print(f"path : {path}")
