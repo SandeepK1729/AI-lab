@@ -33,7 +33,7 @@ if __name__ == "__main__":
         'C': [('D', 12)]
     }
 
-    graph = Graoh(A, H)
+    graph = Graph(A, H)
     cost, path = graph.find_a_star_path('A', 'D')
     print(f"cost : {cost}")
     print(f"path : {path}")
