@@ -88,26 +88,23 @@ class Agent:
                 stench = True
         return [breeze,stench]
     
-    def FindCurrentLocation(self):
-        return self._curLoc
-
+    def findPossibleWays(self) : 
+        x, y = self._currentLocation
+        
+        moves = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        possible_moves = []
+        for i, j in moves : 
+            new_x, new_y = x + i, y + j
+            if 1 <= new_x <= 4 or 1 <= new_y <= 4 : 
+                continue
+        
+            possible_moves.append(new_x, new_y)
+        return possible_moves
+    
 def main():
-    ag = Agent()
-    print('curLoc',ag.FindCurrentLocation())
-    print('Percept [breeze, stench] :',ag.PerceiveCurrentLocation())
-    ag.TakeAction('Right')
-    print('Percept',ag.PerceiveCurrentLocation())
-    ag.TakeAction('Right')
-    print('Percept',ag.PerceiveCurrentLocation())
-    ag.TakeAction('Right')
-    print('Percept',ag.PerceiveCurrentLocation())
-    ag.TakeAction('Up')
-    print('Percept',ag.PerceiveCurrentLocation())
-    ag.TakeAction('Up')
-    print('Percept',ag.PerceiveCurrentLocation())
-    ag.TakeAction('Up')
-    print('Percept',ag.PerceiveCurrentLocation())
-
-
+    agent = Agent()
+    
+    while agent._isAlive or not agent._isGoldFound : 
+        
 if __name__=='__main__':
     main()  
