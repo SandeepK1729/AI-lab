@@ -22,8 +22,7 @@ def getNeighbours(solution):
     for i in range(len(solution)):
         for j in range(i + 1, len(solution)):
             neighbour = solution 
-            neighbour[i] = solution[j]
-            neighbour[j] = solution[i]
+            neighbour[i], neighbour[j] = neighbour[j], neighbour[i]
             neighbours.append(neighbour)
     return neighbours
 
