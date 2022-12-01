@@ -117,7 +117,10 @@ class TicTacToe:
         
             
 if __name__ == "__main__" : 
-    game = TicTacToe() 
-    
-    print(fg('white'))
-    print(f"Result : {game.play_game()}")
+    try:
+        game = TicTacToe() 
+        
+        print(fg('white'))
+        print(f"Result : {game.play_game()}")
+    finally:
+        print(fg('white'))

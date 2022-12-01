@@ -7,7 +7,6 @@ facts = [
     ('chirp','canary'),
     ('sing','canary'),
     ("canary","yellow"),
-    
 ]
 
 
